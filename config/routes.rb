@@ -1,3 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'visitors#index'
+  root to: 'tracks#index'
+
+  resources :tracks, only: [:index, :show]
 end

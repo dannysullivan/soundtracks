@@ -17,9 +17,9 @@ ActiveRecord::Schema.define(version: 20181107210314) do
 
   create_table "tracks", force: :cascade do |t|
     t.string   "title"
-    t.string   "bandcamp_url"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.string   "bandcamp_track_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
 end

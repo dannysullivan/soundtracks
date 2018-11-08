@@ -64,6 +64,7 @@ GEM
       xpath (~> 3.2)
     childprocess (0.9.0)
       ffi (~> 1.0, >= 1.0.11)
+    cliver (0.3.2)
     coderay (1.1.2)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
@@ -133,6 +134,10 @@ GEM
     nokogiri (1.8.5)
       mini_portile2 (~> 2.3.0)
     pg (0.21.0)
+    poltergeist (1.18.1)
+      capybara (>= 2.1, < 4)
+      cliver (~> 0.3.1)
+      websocket-driver (>= 0.2.0)
     popper_js (1.14.3)
     public_suffix (3.0.3)
     puma (3.12.0)
@@ -257,6 +262,7 @@ DEPENDENCIES
   launchy
   listen (~> 3.0.5)
   pg (~> 0.18)
+  poltergeist
   puma (~> 3.0)
   rails (~> 5.0.7)
   rails_layout

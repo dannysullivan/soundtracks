@@ -39,8 +39,8 @@ group :development, :test do
 end
 group :test do
   gem 'capybara'
+  gem 'poltergeist'
   gem 'database_cleaner'
   gem 'launchy'
   gem 'selenium-webdriver'
-  gem 'factory_bot_rails'
 end

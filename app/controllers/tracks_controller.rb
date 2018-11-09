@@ -1,5 +1,10 @@
 class TracksController < ApplicationController
   def index
-    @tracks = Track.all
+    if params[:tag]
+      tag = Tag.find(params[:tag])
+      @tracks = tag.tracks
+    else
+      @tracks = Track.all
+    end
   end
 end

@@ -15,5 +15,5 @@
         = link_to track.title, 'http://dannysullivan.bandcamp.com/album/soundtracks-2'
     .col-sm-3
       - track.tags.each do |track_tag|
-        %span.badge.badge-secondary= track_tag.name
+        = link_to track_tag.name, tracks_path(tag: track_tag.id), class: 'badge badge-secondary'
   %hr

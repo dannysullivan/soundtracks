@@ -1,12 +1,19 @@
-Tracks
+%h1.text-center Tracks
 .row
-  - @tracks.each do |track|
-    .col-sm-4
-      .card
-        %p= track.title
-        %iframe{style: "border: 0; width: 100%; height: 42px;", src: "https://bandcamp.com/EmbeddedPlayer/album=2944136907/size=small/bgcol=ffffff/linkcol=0687f5/track=#{track.bandcamp_track_id}/transparent=true/", seamless: true}
-          = link_to track.title, 'http://dannysullivan.bandcamp.com/album/soundtracks-2'
-        .row
-          .col-sm-12
-            - track.tags.each do |track_tag|
-              %span.badge.badge-secondary= track_tag.name
+  .col-sm-3
+    %p.font-weight-bold Title
+  .col-sm-6
+    %p.font-weight-bold Preview
+  .col-sm-3
+    %p.font-weight-bold Tags
+- @tracks.each do |track|
+  .row
+    .col-sm-3
+      %p= track.title
+    .col-sm-6
+      %iframe{style: "border: 0; width: 100%; height: 42px;", src: "https://bandcamp.com/EmbeddedPlayer/album=2944136907/size=small/bgcol=ffffff/linkcol=0687f5/track=#{track.bandcamp_track_id}/transparent=true/", seamless: true}
+        = link_to track.title, 'http://dannysullivan.bandcamp.com/album/soundtracks-2'
+    .col-sm-3
+      - track.tags.each do |track_tag|
+        %span.badge.badge-secondary= track_tag.name
+  %hr

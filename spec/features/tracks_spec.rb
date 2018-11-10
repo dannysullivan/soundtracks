@@ -36,5 +36,22 @@ feature 'Tracks' do
       expect(page).not_to have_content 'Happy Track'
       expect(page).not_to have_content 'Upbeat Track'
     end
+
+    it 'allows user to remove tags from filter' do
+      happy_tag = FactoryBot.create(:tag, name: 'happy')
+      upbeat_tag = FactoryBot.create(:tag, name: 'upbeat')
+
+      FactoryBot.create(:track, title: 'Happy Track', tags: [happy_tag])
+      FactoryBot.create(:track, title: 'Upbeat Track', tags: [upbeat_tag])
+      visit tracks_path
+
+      first('a', text: 'happy').click
+      expect(page).to have_content 'Happy Track'
+      expect(page).not_to have_content 'Upbeat Track'
+
+      first('a', text: 'happy x').click
+      expect(page).to have_content 'Happy Track'
+      expect(page).to have_content 'Upbeat Track'
+    end
   end
 end

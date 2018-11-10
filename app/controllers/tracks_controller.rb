@@ -1,9 +1,11 @@
 class TracksController < ApplicationController
   def index
-    if params[:tag]
-      tag = Tag.find(params[:tag])
-      @tracks = tag.tracks
+    if params[:selected_tags]
+      tags = Tag.find(params[:selected_tags].split(','))
+      @tracks = Track.with_tags(tags)
+      @selected_tags = tags
     else
+      @selected_tags = []
       @tracks = Track.all
     end
   end

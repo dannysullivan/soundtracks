@@ -21,14 +21,19 @@ feature 'Tracks' do
       happy_tag = FactoryBot.create(:tag, name: 'happy')
       upbeat_tag = FactoryBot.create(:tag, name: 'upbeat')
 
-      FactoryBot.create(:track, title: 'Happy Track', bandcamp_track_id: '11111111', tags: [happy_tag])
-      FactoryBot.create(:track, title: 'Upbeat Track', bandcamp_track_id: '11111111', tags: [upbeat_tag])
+      FactoryBot.create(:track, title: 'Happy Track', tags: [happy_tag])
+      FactoryBot.create(:track, title: 'Upbeat Track', tags: [upbeat_tag])
+      FactoryBot.create(:track, title: 'Happy and Upbeat', tags: [happy_tag, upbeat_tag])
       visit tracks_path
-      expect(page).to have_content 'Happy Track'
-      expect(page).to have_content 'Upbeat Track'
 
-      click_on 'happy'
+      first('a', text: 'happy').click
       expect(page).to have_content 'Happy Track'
+      expect(page).to have_content 'Happy and Upbeat'
+      expect(page).not_to have_content 'Upbeat Track'
+
+      first('a', text: 'upbeat').click
+      expect(page).to have_content 'Happy and Upbeat'
+      expect(page).not_to have_content 'Happy Track'
       expect(page).not_to have_content 'Upbeat Track'
     end
   end

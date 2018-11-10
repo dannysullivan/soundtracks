@@ -1,4 +1,6 @@
 %h1.text-center Tracks
+- @selected_tags.each do |selected_tag|
+  = link_to selected_tag.name, tracks_path(tag: selected_tag.id), class: 'badge badge-secondary'
 .row
   .col-sm-3
     %p.font-weight-bold Title
@@ -15,5 +17,5 @@
         = link_to track.title, 'http://dannysullivan.bandcamp.com/album/soundtracks-2'
     .col-sm-3
       - track.tags.each do |track_tag|
-        = link_to track_tag.name, tracks_path(tag: track_tag.id), class: 'badge badge-secondary'
+        = link_to track_tag.name, tracks_path(selected_tags: (@selected_tags.pluck(:id) + [track_tag.id]).uniq.join(',')), class: 'badge badge-secondary'
   %hr

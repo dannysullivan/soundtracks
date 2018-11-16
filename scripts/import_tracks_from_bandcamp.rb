@@ -1,4 +1,4 @@
-require 'CSV'
+require 'csv'
 
 CSV.foreach('config/tracks.csv', headers: true) do |line|
   track = Track.find_or_create_by(title: line[0], bandcamp_track_id: line[1])

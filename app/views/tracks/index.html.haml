@@ -1,6 +1,9 @@
 %h1.text-center Tracks
 - @selected_tags.each do |selected_tag|
-  = link_to "#{selected_tag.name} x", tracks_path(selected_tags: (@selected_tags.pluck(:id) - [selected_tag.id]).join(',')), class: 'badge badge-secondary'
+  %p
+    %span.font-weight-bold Selected Tags:
+    = link_to "#{selected_tag.name} x", tracks_path(selected_tags: (@selected_tags.pluck(:id) - [selected_tag.id]).join(',')), class: 'badge badge-secondary'
+    %br
 .row
   .col-sm-3
     %p.font-weight-bold Title
